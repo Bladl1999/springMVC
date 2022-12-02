@@ -2,12 +2,13 @@ package ru.vladislav.models;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "position")
-public class Position {
+public class Position implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +21,6 @@ public class Position {
     @Column(name = "salary")
     private long salary;
 
-    //N....1
     @OneToMany()
     @JoinColumn(name = "emploee_id")
     private Set<Emploee> emploee;

@@ -3,6 +3,7 @@ package ru.vladislav.dao;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import ru.vladislav.models.Customer;
 import ru.vladislav.utils.HibernateSessionFactoryUtil;
 
@@ -11,10 +12,14 @@ import java.util.List;
 @Component
 public class CustomerDAO {
 
+
     public Customer findById(long id) {
         return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Customer.class, id);
     }
 
+
+
+    @Transactional
     public Customer save(Customer customer) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();

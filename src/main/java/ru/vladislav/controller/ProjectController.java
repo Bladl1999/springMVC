@@ -1,12 +1,15 @@
 package ru.vladislav.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.vladislav.models.Project;
 import ru.vladislav.service.ProjectService;
 
 import java.util.List;
 
+@Controller
+@RequestMapping("/project")
 public class ProjectController {
 
     private ProjectService projectService;

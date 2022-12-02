@@ -1,11 +1,12 @@
 package ru.vladislav.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "project")
-public class Project {
+public class Project implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,12 +16,10 @@ public class Project {
     @Column
     private String name;
 
-    //N...N
     @ManyToOne()
     @JoinColumn(name="cutomer_id", nullable=false)
     private Customer customer;
-
-    //N....1
+    
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Emploee_Project",
             joinColumns = { @JoinColumn(name = "project_id") },
